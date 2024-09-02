@@ -1,4 +1,5 @@
 body {
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
@@ -8,6 +9,12 @@ body {
     animation: gradientAnimation 15s ease infinite;
 }
 
+@media (max-width: 600px) {
+    body {
+        background-size: 200% 200%; /* Adjust background size for smaller screens */
+        animation-duration: 20s; /* Slow down animation on mobile for smoother effect */
+    }
+}
 @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
@@ -140,6 +147,9 @@ header.sticky {
     .nav-active li {
         opacity: 1;
         transition: opacity 0.5s ease-in-out;
+        padding: 15px 0; /* Add spacing between links */
+        width: 100%;
+        text-align: center;
     }
 
     .burger.toggle .line1 {
@@ -187,44 +197,6 @@ header.sticky {
     }
     100% {
       background-position: 0% 0%;
-    }
-  }
-  
-  .fireworks {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .firework {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 0, 0, 0) 70%);
-    width: 10px;
-    height: 10px;
-    opacity: 0;
-    transform: scale(0);
-    pointer-events: none;
-    /* Make animation random */
-    animation: firework 2s ease-out infinite;
-  }
-  
-  @keyframes firework {
-    0% {
-      transform: scale(0);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.6;
-    }
-    100% {
-      transform: scale(0);
-      opacity: 0;
     }
   }
   
@@ -412,7 +384,7 @@ h2 {
 /* Section Container */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ukuran kolom lebih kecil */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ukuran kolom lebih kecil */
     gap: 20px;
   }
   
@@ -422,6 +394,7 @@ h2 {
     border-radius: 10px;
     width: 100%;
     height: 600px; /* Tinggi lebih besar */
+    min-height: 200px; /* Menyediakan tinggi minimum */
   }
   
   .grid-item img {
@@ -429,6 +402,7 @@ h2 {
     height: 100%;
     display: block;
     transition: transform 0.3s;
+    object-fit: cover; /* Menjaga gambar tetap penuh dalam area grid */
   }
   
   .grid-item .caption {
@@ -440,12 +414,13 @@ h2 {
   }
   
   .grid-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Efek pembesaran saat hover */
   }
+  
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Mengatur ukuran kolom gambar lebih kecil */
-    gap: 20px; /* Jarak antar kolom */
+    gap: 10px; /* Jarak antar kolom */
 }
 
 /* Grid Item */
@@ -455,7 +430,7 @@ h2 {
     border-radius: 10px;
     /* Mengatur ukuran gambar agar sesuai dengan kolom */
     width: 100%;
-    height: 500px; /* Atur tinggi grid item jika diperlukan */
+    height: 550px; /* Atur tinggi grid item jika diperlukan */
 }
 
 .grid-item img {
@@ -463,6 +438,7 @@ h2 {
     height: auto;
     display: block;
     transition: transform 0.3s;
+    object-fit: cover; 
 }
 
 .grid-item .overlay {
@@ -490,6 +466,17 @@ h2 {
 .grid-item:hover .overlay {
     opacity: 1;
 }
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Kolom lebih kecil */
+    }
+    .grid-item {
+        height: 500px; /* Tinggi yang lebih rendah untuk layar kecil */
+    }
+}
+
+/* CSS untuk section Projects */
+
 
 /* Footer Styles */
 footer {
@@ -605,4 +592,101 @@ p:hover {
 
 .social-links a:hover i {
     color: #0a66c2; /* Warna ikon saat hover (warna LinkedIn) */
+}
+.my-hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamic column size */
+    gap: 10px; /* Space between grid items */
+}
+
+/* Individual grid items */
+.my-hobby-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+}
+
+/* Styling for images inside the grid items */
+.my-hobby-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover; /* Ensures the image covers the entire grid item */
+}
+
+/* Overlay styling for text and buttons */
+.my-hobby-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.3s ease-in-out;
+}
+.my-hobby-item:hover img {
+    transform: scale(1.05); /* Efek pembesaran saat hover */
+}
+
+.my-hobby-item:hover .my-hobby-overlay {
+    background: rgba(0, 0, 0, 0.9); /* Warna background overlay saat hover */
+}
+
+/* Responsiveness for mobile devices */
+@media (max-width: 600px) {
+    .my-hobby-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Kolom lebih kecil untuk layar kecil */
+        gap: 5px; /* Jarak antar kolom lebih kecil */
+    }
+
+    .my-hobby-item {
+        height: 250px; /* Tinggi lebih kecil untuk layar kecil */
+    }
+
+    .my-hobby-overlay {
+        padding: 5px; /* Padding lebih kecil untuk layar kecil */
+        font-size: 12px; /* Ukuran font lebih kecil untuk layar kecil */
+    }
+}
+
+/* Hover effect to show overlay */
+.my-hobby-item:hover img {
+    transform: scale(1.1);
+}
+
+.my-hobby-item:hover .my-hobby-overlay {
+    opacity: 1;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+    .my-hobby-item {
+        height: 250px; /* Reduced height for smaller screens */
+    }
+}
+
+/* Styling for the 'View' button */
+.view-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.view-button:hover {
+    background-color: #f1f1f1;
 }

@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   burger.addEventListener('click', () => {
       navLinks.classList.toggle('nav-active');
       burger.classList.toggle('toggle');
+      nav.classList.toggle('nav-active');
 
       // Animate Links
       navItems.forEach((link, index) => {
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
               link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
           }
       });
+      burger.classList.toggle('toggle');
   });
 
   // Scroll-based animations
