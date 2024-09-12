@@ -8,7 +8,12 @@ body {
     color: #ffffff;
     animation: gradientAnimation 15s ease infinite;
 }
-
+@media only screen and (max-width: 768px) {
+    body {
+        background-size: 300% 300%;
+        padding: 0 10px;
+    }
+}
 @media (max-width: 600px) {
     body {
         background-size: 200% 200%; /* Adjust background size for smaller screens */
@@ -120,29 +125,37 @@ header.sticky {
 /* Responsive Navbar */
 @media screen and (max-width: 768px) {
     .nav-links {
-        position: absolute;
+        position: fixed;
         right: 0;
-        height: 100vh;
         top: 0;
         background-color: #282c34;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
+        align-items: flex-end;
+        width: 30%;
+        height:70vh;
         transform: translateX(100%);
         transition: transform 0.3s ease-in;
+        z-index: 1000;
+        padding-top: 10px;
     }
 
     .nav-links li {
-        opacity: 0;
+        margin: 5px 0; /* Memberikan ruang antara setiap item menu */
     }
 
     .burger {
         display: block;
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        z-index: 20; /* Agar burger menu tetap di atas navigasi */
     }
 
     .nav-active {
         transform: translateX(0);
+        display: flex;
     }
+    
 
     .nav-active li {
         opacity: 1;
@@ -561,29 +574,7 @@ footer {
         text-shadow: 0 0 10px #61dafb, 0 0 20px #61dafb, 0 0 30px #61dafb;
     }
 }
-/* General styling for the navigation links */
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1em;
-    transition: color 0.3s;
-    display: flex;
-    align-items: center; /* Ensure icon and text are vertically aligned */
-}
 
-.nav-links li a i {
-    margin-right: 8px; /* Space between icon and text */
-    font-size: 1.2em;  /* Adjust the icon size if needed */
-}
-
-.nav-links li a:hover {
-    color: #ff4c4c; /* Change to your preferred hover color */
-}
-p:hover {
-    color: #ffffff; /* Warna teks tetap putih */
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff; /* Efek glow putih */
-}
 .social-links a i {
     font-size: 1.5em; /* Ukuran ikon */
     transition: color 0.3s ease;

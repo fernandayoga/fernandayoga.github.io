@@ -21,6 +21,16 @@ document.addEventListener('DOMContentLoaded', function () {
       navLinks.classList.toggle('nav-active');
       burger.classList.toggle('toggle');
       nav.classList.toggle('nav-active');
+      closeBtn.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Close the nav when a link is clicked
+            navLinks.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+        });
+    });
 
       // Animate Links
       navItems.forEach((link, index) => {
